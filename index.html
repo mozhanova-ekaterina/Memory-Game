@@ -1,12 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
+    <link rel="stylesheet" href="/src/style.scss" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <section class="game">
+        <div class="game_board"></div>
+        <button class="restart">Начать заново</button>
+        <div class="win_text">
+          Вы выиграли!!!</div>
+      </section>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

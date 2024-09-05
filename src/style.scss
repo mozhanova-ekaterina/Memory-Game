@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Nerko+One&family=Pixelify+Sans:wght@400..700&display=swap");
+
+.game {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-family: "Pixelify Sans", sans-serif;
+  .restart {
+    max-width: 200px;
+    padding: 5px;
+    border-radius: 10px;
+    outline: none;
+    background-color: transparent;
+    box-shadow: 2px -11px 12px -9px rgba(34, 60, 80, 0.2);
+    border:  1px solid gray;
+    transition: all .3s ease;
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+  .win_text {
+    color: #ff337a;
+    font-size: 60px;
+    position: absolute;
+    top: 100px;
+    display: none;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  &_board {
+    display: grid;
+    gap: 5px;
+    grid-template: repeat(4, 170px) / repeat(4, 130px);
+    justify-content: center;
+  }
+  &_item {
+    border: 1px solid gray;
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px -11px 12px -9px rgba(34, 60, 80, 0.2);
+
+    .front,
+    .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      backface-visibility: hidden;
+      transition: all 0.3s linear;
+    }
+    .back {
+      transform: perspective(600px) rotateY(0);
+    }
+    .front {
+      transform: perspective(600px) rotateY(180deg);
+    }
+    &.open {
+      .front {
+        transform: perspective(600px) rotateY(0);
+      }
+      .back {
+        transform: perspective(600px) rotateY(180deg);
+      }
+    }
+    &.done {
+      .front {
+        transform: perspective(600px) rotateY(0);
+      }
+      .back {
+        transform: perspective(600px) rotateY(180deg);
+      }
+    }
+    &.win {
+      animation: win 0.3s linear 4;
+    }
+  }
+}
+
+@keyframes win {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  75% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
